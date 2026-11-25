@@ -27,42 +27,53 @@ To collect employee details, validate inputs, and calculate gross and net salary
 9. **Stop** the program.
 
 ## Program
-# Employee Payroll calculation
-```python
-name = input("Enter Employee name : ")
-emp_id = input("Enter Employee ID : ")
-basic = float(input("Enter Basic Pay : "))
-hra = 0.25 * basic
-da = 0.20 * basic
-gross = basic+hra+da
-tax = 0.10 * gross
-net = gross - tax
-print("---Employee Salary Report---")
-print(f"Employee Name: {name}")
-print(f"Employee ID: {emp_id}")
-print(f"Basic pay: {basic}")
-print(f"HRA:{hra}")
-print(f"DA:{da}")
-print(f"Gross Salary: {gross}")
-print(f"Tax Deducted: {tax}")
-print(f"Net Salary : {net}")
-```
+    def main():
+        name = input("Enter Employee Name: ").strip()
+        emp_id = input("Enter Employee ID: ").strip()
+
+    if not name or not emp_id:
+        print("Error: Employee Name and Employee ID cannot be empty.")
+        return
+
+    try:
+        basic = float(input("Enter Basic Salary: "))
+    except ValueError:
+        print("Error: Basic salary must be a valid numeric value.")
+        return
+
+    if basic < 0:
+        print("Error: Basic salary cannot be negative.")
+        return
+
+    hra = 0.15 * basic
+    da = 0.10 * basic
+    gross_salary = basic + hra + da
+    tax = 0.08 * gross_salary
+    net_salary = gross_salary - tax
+
+    print("\n" + "=" * 42)
+    print("           EMPLOYEE PAYROLL REPORT")
+    print("=" * 42)
+    print(f"Employee Name : {name}")
+    print(f"Employee ID   : {emp_id}")
+    print("-" * 42)
+    print(f"Basic Salary  : {basic:10.2f}")
+    print(f"HRA (15%)     : {hra:10.2f}")
+    print(f"DA (10%)      : {da:10.2f}")
+    print("-" * 42)
+    print(f"Gross Salary  : {gross_salary:10.2f}")
+    print(f"Tax (8%)      : {tax:10.2f}")
+    print("-" * 42)
+    print(f"Net Salary    : {net_salary:10.2f}")
+    print("=" * 42)
+
+
+if __name__ == "__main__":
+    main()
 
 ## Output
-```text
-Enter Employee name : Vishal
-Enter Employee ID : BMD49485
-Enter Basic Pay : 50000
----Employee Salary Report---
-Employee Name: Vishal
-Employee ID: BMD49485
-Basic pay: 50000.0
-HRA:12500.0
-DA:10000.0
-Gross Salary: 72500.0
-Tax Deducted: 7250.0
-Net Salary : 65250.0
-```
+  <img width="427" height="448" alt="image" src="https://github.com/user-attachments/assets/b4861e03-2294-4e63-9cb5-513014e86878" />
+    
 
 ## ✅ Result
 
